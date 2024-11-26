@@ -20,3 +20,16 @@ spec:
         - containerPort: 80
       imagePullSecrets:
       - name: docker-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: detection-frontend
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: detection-frontend
+  type: LoadBalancer
